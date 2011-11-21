@@ -1,0 +1,40 @@
+#nav ul li a{
+	
+}
+#nav ul li a:hover, #nav ul li a:focus{
+	
+}
+.fallback {
+	font-weight: bold;
+	max-width: 500px;
+	float: left;
+	margin-top: -400px;
+}
+#bottomAdvertisement {
+	margin-bottom: 35px !important;
+}
+#meme #eight-grid {
+	margin-bottom: 0px !important;
+}
+#meme-buttons {
+	float: left !important;
+	padding-left: 15px;
+}
+.meme-cfo table {
+	width: auto;
+}
+#popular #bottomAdvertisement {
+	margin-bottom: 200px;
+	padding-bottom: 200px;
+}
+#index #bottomAdvertisement {
+	margin-bottom: 200px;
+	padding-bottom: 200px;
+}
+#create #body-table #bottomAdvertisement {
+	margin-bottom: 200px;
+	padding-bottom: 200px;
+}
+#random-meme #container #container-other table td {
+	width: auto;
+}
