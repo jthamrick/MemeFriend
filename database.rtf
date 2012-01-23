@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf230
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 # ************************************************************\
+# Sequel Pro SQL dump\
+# Version 3408\
+#\
+# http://www.sequelpro.com/\
+# http://code.google.com/p/sequel-pro/\
+#\
+# Host: memefriend.db.8550815.hostedresource.com (MySQL 5.0.92-log)\
+# Database: memefriend\
+# Generation Time: 2012-01-23 02:39:38 +0000\
+# ************************************************************\
+\
+\
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;\
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;\
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;\
+/*!40101 SET NAMES utf8 */;\
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;\
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;\
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;\
+\
+\
+# Dump of table facebook_images\
+# ------------------------------------------------------------\
+\
+DROP TABLE IF EXISTS `facebook_images`;\
+\
+CREATE TABLE `facebook_images` (\
+  `id` int(11) unsigned NOT NULL auto_increment,\
+  `path` varchar(30) default NULL,\
+  `user` varchar(100) default NULL,\
+  `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,\
+  `meme_path` varchar(50) default NULL,\
+  `reported` int(1) NOT NULL default '0',\
+  `popularity` int(10) NOT NULL default '0',\
+  `approved` int(1) NOT NULL default '0',\
+  `meme_name` varchar(200) default NULL,\
+  `private` int(1) NOT NULL default '0',\
+  PRIMARY KEY  (`id`)\
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;\
+\
+LOCK TABLES `facebook_images` WRITE;\
+/*!40000 ALTER TABLE `facebook_images` DISABLE KEYS */;\
+\
+\
+\
+/*!40000 ALTER TABLE `facebook_images` ENABLE KEYS */;\
+UNLOCK TABLES;\
+\
+\
+\
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;\
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;\
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;\
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;\
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;\
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;\
+}
