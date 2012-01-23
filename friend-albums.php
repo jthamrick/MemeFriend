@@ -1,7 +1,7 @@
 <?php 
 	require 'library/functions.php'; 
 	require 'library/facebook.php'; 
-	$facebook = new Facebook(array( 'appId' => '125840664189504', 'secret' => '6790c4efd930a327aae18515c23a79c7', 'cookie' => true, )); 
+	$facebook = new Facebook(array( 'appId' => 'ENTER YOUR FACEBOOK APP ID HERE', 'secret' => 'ENTER YOUR FACEBOOK APP SECRET HERE', 'cookie' => true, ));
 	$user = $facebook->getUser(); 
 	if ($user) { try {
 		$userId = $_GET['id']; 
@@ -20,13 +20,16 @@
 		$user = null; }} 
 	if ($user) { $logoutUrl = $facebook->getLogoutUrl(); 
 	} else { $loginUrl = $facebook->getLoginUrl(array( 'scope' => 'user_photos,friends_photos' )); } 
+	
+	function protect($string){$string = trim(strip_tags(addslashes($string))); return $string;}
+	$userName = protect($_GET['name']);
 ?>
 <!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml" lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<TITLE>Choose A Friends Album</TITLE> 
-		<LINK REV="made" href="mailto:andrew.fasch@gmail.com" />
+		<LINK REV="made" href="mailto: enter email address here" />
 		<META NAME="keywords" CONTENT="meme, meme generator, meme friend, memefriend, memefriend.com, facebook memes, memes from facebook images, friend meme, friendmeme" />
 		<META NAME="description" CONTENT="A place where you can create memes from your pictures on Facebook. Because your friends are funnier than pictures of cats and frogs." />
 		<META NAME="author" CONTENT="JT Hamrick" />
@@ -46,7 +49,7 @@
 				<tr>
 					<td>
 						<div id="container_other">
-
+							<p><?php echo $userName ?>'s Albums</p>
 							<p class="bold">Don't want to use an image from Facebook? <a href="upload-image.php" class="button primary">Click Here</a> to use an image from your computer!</p><br/>
 							<?php if(!empty($albums)) { ?>
 							<table id="albums">
@@ -67,7 +70,7 @@
 								</tr>
 							</table>
 							<?php } ?>
-
+							
 						</div>
 					</td>
 				</tr>

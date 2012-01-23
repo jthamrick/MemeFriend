@@ -1,7 +1,7 @@
 <?php 
 	require 'library/functions.php'; 
 	require 'library/facebook.php'; 
-	$facebook = new Facebook(array( 'appId' => '125840664189504', 'secret' => '6790c4efd930a327aae18515c23a79c7', 'cookie' => true, )); 
+	$facebook = new Facebook(array( 'appId' => 'ENTER YOUR FACEBOOK APP ID HERE', 'secret' => 'ENTER YOUR FACEBOOK APP SECRET HERE', 'cookie' => true, ));
 	include('library/configuration.php'); 
 	$user = $facebook->getUser();  
 	if ($user) { $logoutUrl = $facebook->getLogoutUrl(); 
@@ -12,7 +12,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>My Memes</title>
-		<LINK REV="made" href="mailto:andrew.fasch@gmail.com" />
+		<LINK REV="made" href="mailto: enter email address here" />
 		<META NAME="keywords" CONTENT="meme, meme generator, meme friend, memefriend, memefriend.com, facebook memes, memes from facebook images, friend meme, friendmeme" />
 		<META NAME="description" CONTENT="A place where you can create memes from your pictures on Facebook. Because your friends are funnier than pictures of cats and frogs." />
 		<META NAME="author" CONTENT="JT Hamrick" />

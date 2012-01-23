@@ -598,6 +598,12 @@ body#advertisement #bottomAdvertisement {
 
 /* @group Create Styles */
 
+.meme {
+	min-width: 1020px !important;
+}
+#upload .meme {
+	min-width: 1045px !important;
+}
 #albums{
 	border:0 none;
 	border-collapse:collapse;
