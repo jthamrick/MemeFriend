@@ -10,13 +10,17 @@ $npath = "photos/";
 $facebook = new Facebook(array( 'appId' => '125840664189504', 'secret' => '6790c4efd930a327aae18515c23a79c7', 'cookie' => true, ));
 $user = $facebook->getUser();
 
-	$valid_formats = array("jpg", "png", "gif", "bmp");
+	$valid_formats = array("jpg", "JPG", "png", "PNG", "gif", "GIF", "bmp", "BMP");
 	if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
 		$name = $_FILES['photoimg']['name'];
 		$size = $_FILES['photoimg']['size'];
 			
 		if(strlen($name)) {
+			//for some reason this will not return the right extension
 			list($txt, $ext) = explode(".", $name);
+			//the line below gets the extension correctly
+			$ext = substr($name, -3, 3);
+			
 			if(in_array($ext,$valid_formats)) {
 				if($size<(1024*1024)) {
 					$actual_image_name = time().substr(str_replace(" ", "_", $txt), strlen($txt)).".".$ext;
@@ -35,7 +39,7 @@ $user = $facebook->getUser();
 						$process = $image->resize();
 						
 						echo '<a href="make-changes.php?file='.$actual_image_name.'" class="button primary" id="useImage">Use This Image</a>' .
-							'<br/>';
+							'<br/><br/>';
 						echo "<img src='photos/".$actual_image_name."' class='preview' />";
 					}
 					else 

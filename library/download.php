@@ -6,13 +6,19 @@ function protect($string){$string = trim(strip_tags(addslashes($string))); retur
 $mysqldate = date( 'Y-m-d H:i:s', $phpdate ); 
 $phpdate = strtotime( $mysqldate ); 
 $max_file_size = 52428800; 
-$fullPath = protect($_GET['file']); 
+if(isset($_GET['file'])) {
+	$fullPath = protect($_GET['file']); 
+} else {
+	$fullPath = protect($_POST['iUrl']);
+}
 $user = protect($_GET['user']); 
 $save_path = '../photos/'; 
 $db_path = 'photos/'; 
-$valid_formats = array("jpg", "png", "gif", "bmp"); 
+$valid_formats = array("jpg", "JPG", "png", "PNG", "gif", "GIF", "bmp", "BMP");
 
-if(strlen($fullPath)) { $ext = substr($fullPath, -3); 
+if(strlen($fullPath)) { 
+	list($txt, $ext) = explode(".", $name);
+	$ext = substr($fullPath, -3, 3);
 	if(in_array($ext,$valid_formats)) { 
 		$newName = time().substr(str_replace(" ", "_", $txt), strlen($txt)).".".$ext; 
 		mysql_query("INSERT INTO facebook_images SET path='$db_path$newName', user=$user"); 

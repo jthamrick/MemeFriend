@@ -1,7 +1,7 @@
 <?php 
 	require 'library/functions.php'; 
 	require 'library/facebook.php'; 
-	$facebook = new Facebook(array( 'appId' => 'ENTER YOUR FACEBOOK APP ID HERE', 'secret' => 'ENTER YOUR FACEBOOK APP SECRET HERE', 'cookie' => true, ));
+	$facebook = new Facebook(array( 'appId' => '125840664189504', 'secret' => '6790c4efd930a327aae18515c23a79c7', 'cookie' => true, )); 
 	$user = $facebook->getUser(); 
 	if ($user) { try { 
 		$user_albums = $facebook->api('/me/albums?limit=400&offset=0'); 
@@ -22,62 +22,73 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml" lang="en">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<TITLE>Choose An Album</TITLE> 
-		<LINK REV="made" href="mailto: enter email address here" />
-		<META NAME="keywords" CONTENT="meme, meme generator, meme friend, memefriend, memefriend.com, facebook memes, memes from facebook images, friend meme, friendmeme" />
-		<META NAME="description" CONTENT="A place where you can create memes from your pictures on Facebook. Because your friends are funnier than pictures of cats and frogs." />
-		<META NAME="author" CONTENT="JT Hamrick" />
-		<META NAME="ROBOTS" CONTENT="ALL" />
+		<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+		<title>MemeFriend</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		<link rev="made" href="mailto:andrew.fasch@gmail.com" />
+		<meta name="keywords" content="meme, meme generator, meme friend, memefriend, memefriend.com, facebook memes, memes from facebook images, friend meme, friendmeme" />
+		<meta name="description" content="A place where you can create memes from your pictures on Facebook. Because your friends are funnier than pictures of cats and frogs." />
+		<meta name="author" content="JT Hamrick" />
+		<meta name="ROBOTS" content="ALL" />
 		<link rel="icon" type="image/png" href="http://memefriend.com/favicon.png" />
 		<link href="css/reset.css" media="screen" type="text/css" rel="stylesheet" />
-		<link href="css/style.css" media="screen" type="text/css" rel="stylesheet" />
+		<link href="css/style.css?version=12" media="screen" type="text/css" rel="stylesheet" />
+		<link href="css/jquery.fancybox-1.3.4.css" media="screen" type="text/css" rel="stylesheet" />
 		<!--[if IE]><link rel="stylesheet" type="text/css" href="css/all-ie-only.css" /><![endif]-->
-		<!--<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-6340872-7"]);_gaq.push(["_setDomainName","memefriend.com"]);_gaq.push(["_trackPageview"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();</script>-->
+		<link href='http://fonts.googleapis.com/css?family=Coda+Caption:800|Days+One|Candal|Carter+One|Oswald|Bowlby+One+SC' rel='stylesheet' type='text/css' />
+		<script src="http://chrisjacob.github.com/Respond/respond.src.js" language="javascript" type="text/javascript"></script>
+		<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-6340872-7"]);_gaq.push(["_setDomainName","memefriend.com"]);_gaq.push(["_trackPageview"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();</script>
 	</head>
-	<body id="create" class="your-create">
-		<div id="container" class="meme">
-			<?php include('templates/header.php') ?>
-			<?php include('templates/navigation.php') ?>
-			<?php include('templates/announcement.php') ?>
-			<table id="body-table">
-				<tr>
-					<td>
-						<div id="container_other">
+	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) {return;}
+				  js = d.createElement(s); js.id = id;
+				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+		<div id="container">
+			<header id="header">
+				<a href="http://memefriend.com/">
+					<img src="img/mf_logo.png" alt="MemeFriend" />
+				</a>
+				<div id="top-advertisement">
+					<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-1591856625609850";
+					google_ad_slot = "9272261326";
+					google_ad_width = 468;
+					google_ad_height = 60;
+					//-->
+				</script>
+				<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+				</div>
+				<div id="announcement">
+					<p class="line-height-fifty">***Brand new site and brand new list of features. Click <a href="new-features.php"><u>here</u></a> to see what we added.</p>
+				</div>
+			</header>
+			<section id="middle"> 
+				<?php include('templates/navigation.php') ?>
+				<article id="main">
 							<?php if ($user): ?>
-							<p class="bold">Don't want to use an image from Facebook? <a href="upload-image.php" class="button primary">Click Here</a> to use an image from your computer!</p><br/>
 							<?php if(!empty($albums)) { ?>
-							<table id="albums">
-								<tr>
 						<?php 
 							$count = 0; 
 							foreach($albums as $album) { 
-								if( $count%4 == 0 && $count != 0 ) 
-									echo "</tr><tr>"; 
-								echo "<td>" . 
+								echo "<div id='album'>" . 
 									"<a href=\"album.php?id={$album['id']}\">" . 
 									"<div class=\"thumb\" style=\"background: url({$album['thumb']}) no-repeat 50% 50%\"></div>" . 
 									stringTruncate($album['name'], 25) . 
 									"<p class=\"bold_number\">{$album['count']}</p>" . 
-									"</a></td>"; 
+									"</a></div>"; 
 							$count++; } 
 						?>
-								</tr>
-							</table>
 							<?php } ?>
 							<?php else: ?>
-							<p class="one_liner_create">Login with facebook to create a meme</p>
+							<p class="one_liner_create">Login with facebook to create a meme - <a href="<?php echo $loginUrl; ?>">Click here to login</a></p>
 							<?php endif ?>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php include('templates/footer.php') ?>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<p class="copy">&copy; 2011 MemeFriend</p>
-	</body>
-</html>
+	</article>
+	<!-- make the middle region's background color expand -->
+	<div class="clear"></div>
+</section>
+<?php include('templates/footer.php') ?>

@@ -1,7 +1,7 @@
 <?php 
 	require 'library/functions.php'; 
 	require 'library/facebook.php'; 
-	$facebook = new Facebook(array( 'appId' => 'ENTER YOUR FACEBOOK APP ID HERE', 'secret' => 'ENTER YOUR FACEBOOK APP SECRET HERE', 'cookie' => true, ));
+	$facebook = new Facebook(array( 'appId' => '125840664189504', 'secret' => '6790c4efd930a327aae18515c23a79c7', 'cookie' => true, )); 
 	$user = $facebook->getUser(); 
 	if ($user) { $logoutUrl = $facebook->getLogoutUrl(); 
 	} else { $loginUrl = $facebook->getLoginUrl(array( 'scope' => 'user_photos,friends_photos' )); } 
@@ -19,7 +19,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Recreate A Meme</title>
-		<LINK REV="made" href="mailto: enter email address here" />
+		<LINK REV="made" href="mailto:andrew.fasch@gmail.com" />
 		<META NAME="keywords" CONTENT="meme, meme generator, meme friend, memefriend, memefriend.com, facebook memes, memes from facebook images, friend meme, friendmeme" />
 		<META NAME="description" CONTENT="A place where you can create memes from your pictures on Facebook. Because your friends are funnier than pictures of cats and frogs." />
 		<META NAME="author" CONTENT="JT Hamrick" />
@@ -30,8 +30,7 @@
 		<link href="css/style.css" media="screen" type="text/css" rel="stylesheet" />
 		<!--[if IE]><link rel="stylesheet" type="text/css" href="css/all-ie-only.css" /><![endif]-->
 		<link href='http://fonts.googleapis.com/css?family=Coda+Caption:800|Days+One|Candal|Carter+One|Oswald|Bowlby+One+SC' rel='stylesheet' type='text/css' />
-		<!--<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-6340872-7"]);_gaq.push(["_setDomainName","memefriend.com"]);_gaq.push(["_trackPageview"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();
-</script>-->
+		<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-6340872-7"]);_gaq.push(["_setDomainName","memefriend.com"]);_gaq.push(["_trackPageview"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();</script>
 	</head>
 	<body id="make-changes">
 		<div id="container">
@@ -150,6 +149,7 @@
 				g.drawImage(c,0,0,width,height);
 				g.textAlign="center";
 				g.font= m+o;
+				g.lineWidth=2;
 				g.strokeStyle="#000000";
 				g.fillStyle=w;
 				g.fillText(e,width/2,40);
@@ -177,7 +177,7 @@
 				if(e!=""){var f=e}
 				var a="canvasData="+b;
 				var d=new XMLHttpRequest();
-				d.open("POST","library/process-new.php?file="+f+"&name="+aa+"&allow="+bb+",true);
+				d.open("POST","library/process-new.php?file="+f+"&name="+aa+"&allow=1",true);
 				d.setRequestHeader("Content-Type","canvas/upload");
 				d.send(a);
 				d.onreadystatechange=function(){
