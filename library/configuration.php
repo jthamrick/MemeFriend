@@ -1,1 +1,1 @@
-<?php $con = mysql_connect('memefriend.db.8550815.hostedresource.com', 'memefriend', 'Fasch@db1') or die(mysql_error()); $db = mysql_select_db('memefriend', $con) or die(mysql_error()); ?>
+<?php $con = mysql_connect('HOST', 'USERNAME', 'PASSWORD') or die(mysql_error()); $db = mysql_select_db('memefriend', $con) or die(mysql_error()); ?>
