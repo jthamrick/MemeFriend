@@ -1,4 +1,4 @@
-<?php 
+<?php
 	if( !isset($_GET['id']) ) die("No direct access allowed!"); 
 	require 'library/facebook.php'; 
 	$facebook = new Facebook(array( 'appId' => '125840664189504', 'secret' => '6790c4efd930a327aae18515c23a79c7', 'cookie' => true, )); 
